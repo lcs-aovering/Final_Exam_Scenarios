@@ -50,8 +50,48 @@ let orange = Color(hue: 25, saturation: 87, brightness: 96, alpha: 100)
 // From there, you may adjust the alpha as needed.
 
 // Begin your solution below...
+//draw backgroud
+canvas.fillColor = Color(hue: 25, saturation: 87, brightness: 96, alpha: 100)
+canvas.drawRectangle(bottomLeftX: 0, bottomLeftY: 0, width: 400, height: 600)
+//remove borders
+canvas.drawShapesWithBorders = false
+//make grid with changing alpha
+canvas.translate(byX: 330, byY: 0)
+canvas.rotate(by: 45)
+for x in stride(from: 0, to: 420, by: 105){
+    for y in stride(from: 0, to: 420, by: 105){if x + y > 315{ canvas.fillColor = Color.init(hue: 0, saturation: 0, brightness: 0, alpha: x/4+y/4+840)
+        
+    }else{
+            canvas.fillColor = Color.init(hue: 0, saturation: 0, brightness: 0, alpha: 100-x/4-y/4)
+        }
+        
+    
+        canvas.drawRectangle(bottomLeftX: x, bottomLeftY: y, width: 105, height: 105)
+    }
+}
 
-
+//make the title text
+canvas.textColor = Color.black
+canvas.drawText(message: "dead kennedys", size: 43, x: 0, y: 420, kerning: 0)
+//create y values for the supporting text
+let y1 = 400
+let y2 = 387
+let y3 = 374
+//creat x values for the supporting text
+let x1 = 10
+let x2 = 115
+let x3 = 220
+//begin drawing supporting text
+canvas.textColor = Color.white
+canvas.drawText(message: "with arizona's", size: Int(9.5), x: x1, y: y1, kerning: -0.5)
+canvas.drawText(message: "the feeders plus", size: Int(9.5), x: x1, y: y2, kerning: -0.5)
+canvas.drawText(message: "l.a.'s black flag", size: Int(9.5), x: x1, y: y3, kerning: -0.5)
+canvas.drawText(message: "wednesday", size: Int(9.5), x: x2, y: y1, kerning: -0.5)
+canvas.drawText(message: "october 10 1979", size: Int(9.5), x: x2, y: y2, kerning: -0.5)
+canvas.drawText(message: "admission $2", size: Int(9.5), x: x2, y: y3, kerning: -0.5)
+canvas.drawText(message: "mabuhay gardens", size: Int(9.5), x: x3, y: y1, kerning: -0.5)
+canvas.drawText(message: "443 broadway", size: Int(9.5), x: x3, y: y2, kerning: -0.5)
+canvas.drawText(message: "san francisco, ca", size: Int(9.5), x: x3, y: y3, kerning: -0.5)
 /*:
  **Remember to commit and push your work,please**.
  */
